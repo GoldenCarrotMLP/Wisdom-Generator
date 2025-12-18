@@ -1,13 +1,12 @@
 import os
 import json
-import google.generativeai as genai
-from dotenv import load_dotenv
 import yaml
+from dotenv import load_dotenv
+import google.genai as genai
 
 load_dotenv()
 
-# Configure Gemini client
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 def load_config():
     with open("config.yaml", "r") as f:
@@ -22,11 +21,17 @@ def generate_batch():
 Return exactly {batch_size} quotes as a valid JSON array of strings.
 Do not include any explanations or text outside the array."""
 
-    model = genai.GenerativeModel(model_name="gemini-3-flash-preview")
-    response = model.generate_content(prompt)
+    # Correct usage: keyword args
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=prompt,
+    )
+
+    # ✅ Use .text instead of .output_text
+    text_output = response.text.strip()
 
     try:
-        quotes = json.loads(response.text)
+        quotes = json.loads(text_output)
         if isinstance(quotes, list) and all(isinstance(q, str) for q in quotes):
             return quotes
         else:

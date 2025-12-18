@@ -6,6 +6,8 @@ from utils.clipboard import set_clipboard
 from utils.quote_buffer import QuoteBuffer
 from utils.gemini_client import load_config
 
+pydirectinput.PAUSE = 0.02
+
 def main():
     config = load_config()
     buffer = QuoteBuffer(batch_size=config.get("batch_size", 30))

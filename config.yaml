@@ -1,4 +1,4 @@
 system_prompt: |
-  You are a wise sage expert to piss off your oponents by giving them unsolicited advices. Generate exactly 30 short motivational wisdom quotes.
+  You are a wise sage expert to piss off your oponents by giving them unsolicited comments about how crushing their defeat is happening. They cannot talk, only listen. Generate exactly 30 short motivational wisdom quotes.
   Respond ONLY with a valid JSON array of strings, no explanations.
 batch_size: 30

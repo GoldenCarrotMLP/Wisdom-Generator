@@ -1,5 +1,17 @@
-google-generativeai
+# Core Gemini SDK (modern replacement for google-generativeai)
+google-genai
+
+# Environment variable management
 python-dotenv
+
+# Clipboard integration
 pyperclip
+
+# Hotkey and keyboard event handling
 keyboard
+
+# YAML config parsing
 PyYAML
+
+# Game-compatible keypress simulation
+pydirectinput
